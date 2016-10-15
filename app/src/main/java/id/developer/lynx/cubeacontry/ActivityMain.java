@@ -258,6 +258,7 @@ public class ActivityMain extends AppCompatActivity {
 //        hasil_y = ((Math.pow(jarak[0], 2)-Math.pow(jarak[1], 2)+Math.pow(beacon_position_x[1], 2)-Math.pow(beacon_position_x[0], 2)+Math.pow(beacon_position_y[1], 2)-Math.pow(beacon_position_y[0], 2)) + (hasil_x*2*(beacon_position_x[0]-beacon_position_x[1]))) / (2*(beacon_position_y[1]-beacon_position_y[0]));
 //
 //        Log.d("Posisi-",hasil_x+" "+hasil_y);
+
     }
 
     private void showLogBeacon(){
