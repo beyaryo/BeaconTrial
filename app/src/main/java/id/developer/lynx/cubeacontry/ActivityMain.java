@@ -302,5 +302,6 @@ public class ActivityMain extends AppCompatActivity {
                     ", x = " +listBeacon.get(i).getCoorX()+
                     ", y = " +listBeacon.get(i).getCoorY());
         }
+//
     }
 }
