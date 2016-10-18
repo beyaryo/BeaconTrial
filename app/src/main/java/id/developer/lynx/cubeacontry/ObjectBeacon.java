@@ -9,6 +9,7 @@ public class ObjectBeacon implements Comparable<ObjectBeacon>{
     private String mac, uuid;
     private Double jarak;
     private Integer major;
+    private Double coorX, coorY;
 
     public ObjectBeacon(String mac, String uuid, Integer major, Double jarak){
         this.mac = mac;
@@ -31,6 +32,22 @@ public class ObjectBeacon implements Comparable<ObjectBeacon>{
 
     public Integer getMajor() {
         return major;
+    }
+
+    public Double getCoorX() {
+        return coorX;
+    }
+
+    public Double getCoorY() {
+        return coorY;
+    }
+
+    public void setCoorX(Double coorX) {
+        this.coorX = coorX;
+    }
+
+    public void setCoorY(Double coorY) {
+        this.coorY = coorY;
     }
 
     @Override
