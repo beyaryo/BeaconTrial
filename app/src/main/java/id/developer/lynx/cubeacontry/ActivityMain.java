@@ -236,18 +236,22 @@ public class ActivityMain extends AppCompatActivity {
 //
 //        Log.d("Posisi-",hasil_x+" "+hasil_y);
 
-//        hasil_x = ((Math.pow(listBeacon.get(0).getJarak()/50, 2) - Math.pow(listBeacon.get(1).getJarak()/50,2))
+//        hasil_x = ((Math.pow(listBeacon.get(0).getJarak()*2, 2) - Math.pow(listBeacon.get(1).getJarak()*2,2))
 //                + Math.pow());
     }
 
     private void doFormula(){
-        String [] macArray = {"DA:E9:4A:11:06:FB", "F3:23:B6:3C:78:F0",
-                "C1:59:5D:BE:23:BB", "E5:1A:E3:C8:3F:07",
-                "E5:B9:D5:12:E9:6E", "DF:DC:DE:E7:71:19"};
+//        String [] macArray = {"DA:E9:4A:11:06:FB", "F3:23:B6:3C:78:F0",
+//                "C1:59:5D:BE:23:BB", "E5:1A:E3:C8:3F:07",
+//                "E5:B9:D5:12:E9:6E", "DF:DC:DE:E7:71:19"};
+
+        String[] macArray = {"E1:1C:5E:D7:CD:17", "EC:97:B2:DD:A9:6E"
+                , "C3:97:C8:47:98:0A", "CF:BA:09:AA:B3:D8"
+                , "C0:C4:E7:01:40:04"};
 
         double hasil_x, hasil_y;
-        double [] beacon_position_x = {0.0,1.0,3.0,8.0,9.9,12.0};
-        double [] beacon_position_y = {7.0,1.0,0.2,8.0,9.9,12.0};
+        double [] beacon_position_x = {0.0,1.0,2.0,0.0,3.0,12.0};
+        double [] beacon_position_y = {7.0,1.0,0.0,6.0,14.0,12.0};
 
         for (int i = 0; i < listBeacon.size(); i++) {
             for (int j = 0; j < macArray.length; j++) {
@@ -259,23 +263,11 @@ public class ActivityMain extends AppCompatActivity {
             }
         }
 
-//        hasil_x = ((Math.pow(jarak[0], 2) - Math.pow(jarak[1], 2)+Math.pow(beacon_position_x[1], 2)-Math.pow(beacon_position_x[0], 2)
-// +Math.pow(beacon_position_y[1], 2)-Math.pow(beacon_position_y[0], 2))
-// *(2*(beacon_position_y[2]-beacon_position_y[1]))
-// - (Math.pow(jarak[1], 2) - Math.pow(jarak[2], 2)+Math.pow(beacon_position_x[2], 2)-Math.pow(beacon_position_x[1], 2)+Math.pow(beacon_position_y[2], 2)-Math.pow(beacon_position_y[1], 2))*(2*(beacon_position_y[1]-beacon_position_y[0])))/
-//                    ((2*(beacon_position_x[1]-beacon_position_x[2]))*(2*(beacon_position_y[1]-beacon_position_y[0]))
-// -(2*(beacon_position_x[0]-beacon_position_x[1]))*(2*(beacon_position_y[2]-beacon_position_y[1])));
-//
-//        hasil_y = ((Math.pow(jarak[0], 2)-Math.pow(jarak[1], 2)+Math.pow(beacon_position_x[1], 2)
-// -Math.pow(beacon_position_x[0], 2)+Math.pow(beacon_position_y[1], 2)-Math.pow(beacon_position_y[0], 2)) +
-// (hasil_x*2*(beacon_position_x[0]-beacon_position_x[1]))) / (2*(beacon_position_y[1]-beacon_position_y[0]));
-//
-
-        hasil_x = (((Math.pow(listBeacon.get(0).getJarak()/50, 2) - Math.pow(listBeacon.get(1).getJarak()/50, 2))
+        hasil_x = (((Math.pow(listBeacon.get(0).getJarak()*2, 2) - Math.pow(listBeacon.get(1).getJarak()*2, 2))
                 + (Math.pow(listBeacon.get(1).getCoorX(), 2) - Math.pow(listBeacon.get(0).getCoorX(), 2))
                 + (Math.pow(listBeacon.get(1).getCoorY(), 2) - Math.pow(listBeacon.get(0).getCoorY(), 2)))
                 * (2 * (listBeacon.get(2).getCoorY() - listBeacon.get(1).getCoorX()))
-                - ((Math.pow(listBeacon.get(1).getJarak()/50, 2) - Math.pow(listBeacon.get(2).getJarak(), 2))
+                - ((Math.pow(listBeacon.get(1).getJarak()*2, 2) - Math.pow(listBeacon.get(2).getJarak(), 2))
                 + (Math.pow(listBeacon.get(2).getCoorX(), 2) - Math.pow(listBeacon.get(1).getCoorX(), 2)))
                 * (2 * (listBeacon.get(2).getCoorY() - listBeacon.get(1).getCoorY())))
                 / ((2 * (listBeacon.get(1).getCoorX() - listBeacon.get(2).getCoorX()))
@@ -283,25 +275,33 @@ public class ActivityMain extends AppCompatActivity {
                 - (2 * (listBeacon.get(0).getCoorX() - listBeacon.get(1).getCoorX()))
                 * (2 * (listBeacon.get(2).getCoorX() - listBeacon.get(1).getCoorY())));
 
-        hasil_y = ((Math.pow(listBeacon.get(0).getJarak()/50, 2) - Math.pow(listBeacon.get(1).getJarak()/50, 2))
+        hasil_y = ((Math.pow(listBeacon.get(0).getJarak()*2, 2) - Math.pow(listBeacon.get(1).getJarak()*2, 2))
                 + (Math.pow(listBeacon.get(1).getCoorX(), 2) - Math.pow(listBeacon.get(0).getCoorX(), 2))
                 + (Math.pow(listBeacon.get(1).getCoorY(), 2) - Math.pow(listBeacon.get(0).getCoorY(), 2))
                 + (hasil_x * 2 * (listBeacon.get(0).getCoorX() - listBeacon.get(1).getCoorX())))
                 / (2 * (listBeacon.get(1).getCoorY() - listBeacon.get(0).getCoorY()));
 
         Log.d(Utils.TAG_LINE, "This is the hasil x : " +hasil_x+ ", and y = " +hasil_y);
-    }
-
-    private void showLogBeacon(){
 
         for (int i = 0; i < listBeacon.size(); i++) {
-            Log.d(Utils.TAG_LINE, "uuid = " +listBeacon.get(i).getUuid()+
+            Log.d(Utils.TAG_LINE, "This is the uuid = " +listBeacon.get(i).getUuid()+
                     ", major = " +listBeacon.get(i).getMajor()+
                     ", mac = " +listBeacon.get(i).getMac()+
                     ", dis = " +listBeacon.get(i).getJarak()+
                     ", x = " +listBeacon.get(i).getCoorX()+
                     ", y = " +listBeacon.get(i).getCoorY());
         }
-//
+    }
+
+    private void showLogBeacon(){
+
+//        for (int i = 0; i < listBeacon.size(); i++) {
+//            Log.d(Utils.TAG_LINE, "uuid = " +listBeacon.get(i).getUuid()+
+//                    ", major = " +listBeacon.get(i).getMajor()+
+//                    ", mac = " +listBeacon.get(i).getMac()+
+//                    ", dis = " +listBeacon.get(i).getJarak()+
+//                    ", x = " +listBeacon.get(i).getCoorX()+
+//                    ", y = " +listBeacon.get(i).getCoorY());
+//        }
     }
 }
